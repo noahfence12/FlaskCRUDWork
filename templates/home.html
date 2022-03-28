@@ -1,0 +1,122 @@
+<html>
+  <body>
+    <h1>Add User</h1>
+    <form method="POST" action="/">
+      <p> User ID</p>
+      <input type="text" name="userid">
+      <p> First Name</p>
+      <input type="text" name="first_name">
+      <p> Last Name</p>
+      <input type="text" name="last_name">
+      <p> Email</p>
+      <input type="text" name="email">
+      <p> Date Created (MM/DD/YYYY) </p>
+      <input type="text" name="date_created">
+      <p> Active (Enter Yes or No)</p>
+      <input type="text" name="active">    
+      <input type="submit" value="Add">
+    </form>
+
+    <h1>Users</h1>
+    <table>
+      {% for user in users %}
+        <tr>
+          <td>
+            {{user.userid}},
+            {{user.first_name}}
+            {{user.last_name}},
+            {{user.email}},
+            {{user.date_created}},
+            {{user.active}}
+          </td>
+
+          <td>
+            <form method="POST" action="./update" style="display: inline">
+              <input type="text" value="{{user.userid}}" name="newid">
+              <input type="hidden" value="{{user.first_name}}" name="oldfirst">
+              <input type="text" value="{{user.first_name}}" name="newfirst">
+              <input type="hidden" value="{{user.last_name}}" name="oldlast">
+              <input type="text" value="{{user.last_name}}" name="newlast">
+              <input type="text" value="{{user.email}}" name="newemail">
+              <input type="text" value="{{user.date_created}}" name="newdate">
+              <input type="text" value="{{user.active}}" name="newactive">
+              <input type="submit" value="Update">
+            </form>
+          </td>
+
+          <td>
+            <form method="POST" action="./delete" style="display: inline">
+              <input type="hidden" value="{{user.userid}}" name="userid">
+              <input type="hidden" value="{{user.first_name}}" name="first_name">
+              <input type="hidden" value="{{user.last_name}}" name="last_name">
+              <input type="hidden" value="{{user.email}}" name="email">
+              <input type="hidden" value="{{user.date_created}}" name="date_created">
+              <input type="hidden" value="{{user.active}}" name="active">
+              <input type="submit" value="Delete">
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+
+
+  </body>
+  <body>
+    <h1>Orders</h1>
+  </body>
+
+  <body>
+    <h1>Orders</h1>
+  </body>
+<!--
+  <body>
+    <h1>Add Order</h1>
+    <form method="POST" action="/">
+      <p> Order ID</p>
+      <input type="text" name="orderid">
+      <p> Order Date (MM/DD/YYYY)</p>
+      <input type="text" name="order_date">
+      <p> Status (Active or Not Active)</p>
+      <input type="text" name="status">
+      <p> User ID</p>
+      <input type="text" name="userid">
+      <input type="submit" value="Add">
+    </form>
+
+    <h1>Orders</h1>
+    <table>
+      {% for order in orders %}
+        <tr>
+          <td>
+            {{order.orderid}}
+            {{order.order_date}}
+            {{order.status}}
+            {{order.userid}}
+          </td>
+          <td>
+            <form method="POST" action="./update" style="display: inline">
+              <input type="hidden" value="{{order.orderid}}" name="oldorderid">
+              <input type="text" value="{{order.orderid}}" name="neworderid">
+              <input type="text" value="{{order.order_date}}" name="neworderdate">
+              <input type="text" value="{{order.status}}" name="newstatus">
+              <input type="text" value="{{order.userid}}" name="newuser">
+              <input type="submit" value="Update">
+            </form>
+          </td>
+
+          <td>
+            <form method="POST" action="./delete" style="display: inline">
+              <input type="hidden" value="{{order.orderid}}" name="orderid">
+              <input type="hidden" value="{{order.order_date}}" name="order_date">
+              <input type="hidden" value="{{order.status}}" name="status">
+              <input type="hidden" value="{{order.userid}}" name="userid">
+              <input type="submit" value="Delete">
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+  </body>
+
+-->
+</html>
