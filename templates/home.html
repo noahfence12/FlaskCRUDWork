@@ -61,17 +61,11 @@
 
 
   </body>
-  <body>
-    <h1>Orders</h1>
-  </body>
+
 
   <body>
-    <h1>Orders</h1>
-  </body>
-<!--
-  <body>
     <h1>Add Order</h1>
-    <form method="POST" action="/">
+    <form method="POST" action="/order">
       <p> Order ID</p>
       <input type="text" name="orderid">
       <p> Order Date (MM/DD/YYYY)</p>
@@ -94,7 +88,7 @@
             {{order.userid}}
           </td>
           <td>
-            <form method="POST" action="./update" style="display: inline">
+            <form method="POST" action="./updateorder" style="display: inline">
               <input type="hidden" value="{{order.orderid}}" name="oldorderid">
               <input type="text" value="{{order.orderid}}" name="neworderid">
               <input type="text" value="{{order.order_date}}" name="neworderdate">
@@ -105,7 +99,7 @@
           </td>
 
           <td>
-            <form method="POST" action="./delete" style="display: inline">
+            <form method="POST" action="./deleteorder" style="display: inline">
               <input type="hidden" value="{{order.orderid}}" name="orderid">
               <input type="hidden" value="{{order.order_date}}" name="order_date">
               <input type="hidden" value="{{order.status}}" name="status">
@@ -118,5 +112,55 @@
     </table>
   </body>
 
--->
+
+
+  <body>
+    <h1>Add Scene</h1>
+    <form method="POST" action="/scene">
+      <p> Scene Name</p>
+      <input type="text" name="scene_name">
+      <p> Scene Status (Active or Not Active)</p>
+      <input type="text" name="scene_status">
+      <p> Sensor</p>
+      <input type="text" name="sensor">
+      <p> Order ID</p>
+      <input type="text" name="orderid">
+      <input type="submit" value="Add">
+    </form>
+
+    <h1>Scenes</h1>
+    <table>
+      {% for scene in scenes %}
+        <tr>
+          <td>
+            {{scene.scene_name}},
+            {{scene.scene_status}},
+            {{scene.sensor}},
+            {{scene.orderid}}
+          </td>
+          <td>
+            <form method="POST" action="./updatescene" style="display: inline">
+              <input type="hidden" value="{{scene.scene_name}}" name="oldscenename">
+              <input type="text" value="{{scene.scene_name}}" name="newscenename">
+              <input type="text" value="{{scene.scene_status}}" name="newscenestatus">
+              <input type="text" value="{{scene.sensor}}" name="newsensor">
+              <input type="text" value="{{scene.orderid}}" name="neworder">
+              <input type="submit" value="Update">
+            </form>
+          </td>
+
+          <td>
+            <form method="POST" action="./deletescene" style="display: inline">
+              <input type="hidden" value="{{scene.scene_name}}" name="scene_name">
+              <input type="hidden" value="{{scene.scene_status}}" name="scene_status">
+              <input type="hidden" value="{{scene.sensor}}" name="sensor">
+              <input type="hidden" value="{{scene.orderid}}" name="orderid">
+              <input type="submit" value="Delete">
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+  </body>  
+
 </html>
